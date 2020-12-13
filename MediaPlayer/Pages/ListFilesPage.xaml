@@ -1,0 +1,42 @@
+﻿<Page x:Class="SimpleAudioPlayer.Pages.ListFilesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SimpleAudioPlayer.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ListFilesPage">
+
+    <Grid>
+        <ListBox Name="ListViewMusic"
+             GotFocus="ListViewMusic_GotFocus"
+             ItemsSource="{Binding Mp3Files}"
+             ScrollViewer.CanContentScroll="True"
+             ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}"
+                               Padding="10" />
+                </DataTemplate>
+
+            </ListBox.ItemTemplate>
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Удалить файл"
+                              Name="DeleteMp3File"
+                              Click="DeleteMp3File_Click" />
+                    <MenuItem Header="Скопировать в папку назвачения"
+                              Name="CopyMp3File"
+                              Click="CopyMp3File_Click" />
+                </ContextMenu>
+            </ListBox.ContextMenu>
+        </ListBox>
+        <TextBlock Name="TextBlockEmpty" HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="16" Text="Данная директория пуста"
+            Visibility="Collapsed" />
+    </Grid>
+
+</Page>
